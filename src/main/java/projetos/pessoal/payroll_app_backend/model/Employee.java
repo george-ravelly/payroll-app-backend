@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class Employee {
     @Id
     private String id; // O Mongo usa String/ObjectId por padrão
+    private boolean active;
     private String name;
     
     @Indexed(unique = true)

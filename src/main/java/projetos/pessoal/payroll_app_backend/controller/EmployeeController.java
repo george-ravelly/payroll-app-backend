@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import projetos.pessoal.payroll_app_backend.model.Employee;
@@ -31,8 +32,10 @@ public class EmployeeController {
     }
 
     @GetMapping
-    public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+    public List<Employee> getAllEmployees(
+        @RequestParam(required = false, defaultValue = "true") Boolean active
+    ) {
+        return employeeService.getAllEmployeesActive(active);
     }
 
     @GetMapping("/{id}")

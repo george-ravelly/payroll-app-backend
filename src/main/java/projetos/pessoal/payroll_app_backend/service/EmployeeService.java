@@ -16,27 +16,51 @@ public class EmployeeService {
     }
 
     public Employee createEmployee(Employee employee) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createEmployee'");
+        if (employee.getName() == null || employee.getName().isEmpty()) {
+            throw new IllegalArgumentException("Employee name cannot be null or empty");
+        }
+        if (employee.getDepartmentName() == null || employee.getDepartmentName().isEmpty()) {
+            throw new IllegalArgumentException("Employee department cannot be null or empty");
+        }
+        if (employee.getCpf() == null || employee.getCpf().isEmpty()) {
+            throw new IllegalArgumentException("Employee CPF cannot be null or empty");
+        }
+        return employeeRepository.save(employee);
+    }
+
+    public List<Employee> getAllEmployeesActive(boolean active) {
+        return employeeRepository.findAllByActive(active);
     }
 
     public List<Employee> getAllEmployees() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAllEmployees'");
+        return employeeRepository.findAll();
     }
 
     public Employee getEmployeeById(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getEmployeeById'");
+        return employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Employee not found"));
     }
 
     public Employee updateEmployee(String id, Employee employee) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateEmployee'");
+        Employee existingEmployee = employeeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Employee not found"));
+
+        if (employee.getName() != null && !employee.getName().isEmpty()) {
+            existingEmployee.setName(employee.getName());
+        }
+        if (employee.getDepartmentName() != null && !employee.getDepartmentName().isEmpty()) {
+            existingEmployee.setDepartmentName(employee.getDepartmentName());
+        }
+        if (employee.getCpf() != null && !employee.getCpf().isEmpty()) {
+            existingEmployee.setCpf(employee.getCpf());
+        }
+
+        return employeeRepository.save(existingEmployee);
     }
 
     public void deleteEmployee(String id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteEmployee'");
+        Employee existingEmployee = employeeRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Employee not found"));
+        existingEmployee.setActive(false);
+        employeeRepository.save(existingEmployee);
     }
 }
