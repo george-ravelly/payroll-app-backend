@@ -25,17 +25,17 @@ public class EmployeeService {
         throw new UnsupportedOperationException("Unimplemented method 'getAllEmployees'");
     }
 
-    public Employee getEmployeeById(Long id) {
+    public Employee getEmployeeById(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'getEmployeeById'");
     }
 
-    public Employee updateEmployee(Long id, Employee employee) {
+    public Employee updateEmployee(String id, Employee employee) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'updateEmployee'");
     }
 
-    public void deleteEmployee(Long id) {
+    public void deleteEmployee(String id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deleteEmployee'");
     }
