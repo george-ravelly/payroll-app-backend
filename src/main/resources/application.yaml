@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: payroll-app-backend
+  data:
+    mongodb:
+      uri: mongodb+srv://<user>:<password>@cluster.xxxx.mongodb.net/payroll_db?retryWrites=true&w=majority
+
+stripe:
+  api:
+    key: sk_test_xxxx
