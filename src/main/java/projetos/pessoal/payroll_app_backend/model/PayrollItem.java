@@ -2,11 +2,10 @@ package projetos.pessoal.payroll_app_backend.model;
 
 import java.math.BigDecimal;
 
-import com.stripe.param.radar.ValueListCreateParams.ItemType;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import projetos.pessoal.payroll_app_backend.model.enums.ItemType;
 
 
 @Data
