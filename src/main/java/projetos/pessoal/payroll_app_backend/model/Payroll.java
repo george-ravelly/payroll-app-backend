@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import projetos.pessoal.payroll_app_backend.model.enums.PayrollStatus;
 
 @Document(collection = "payrolls")
 @Data
@@ -31,6 +32,4 @@ public class Payroll {
     
     // Lista de subdocumentos embutida diretamente
     private List<PayrollItem> items = new ArrayList<>();
-    
-    // Getters, Setters
 }
