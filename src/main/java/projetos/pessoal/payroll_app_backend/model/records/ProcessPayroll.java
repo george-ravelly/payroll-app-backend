@@ -1,7 +1,7 @@
 package projetos.pessoal.payroll_app_backend.model.records;
 
-import java.time.LocalDate;
+import projetos.pessoal.payroll_app_backend.model.PayrollPeriod;
 
-public record ProcessPayroll(LocalDate referencePeriod, String employeeId) {
+public record ProcessPayroll(PayrollPeriod period, String employeeId) {
     
 }

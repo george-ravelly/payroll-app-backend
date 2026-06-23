@@ -54,13 +54,13 @@ public class StripePayoutService {
 
     public String realizarPagamentoSalarial(Payroll payroll, String stripeAccountId) throws StripeException {
         // A Stripe calcula valores em centavos (Ex: R$ 100,00 vira 10000)
-        long valorEmCentavos = payroll.getNetSalary().multiply(new BigDecimal("100")).longValue();
+        long valorEmCentavos = payroll.getNetAmount().multiply(new BigDecimal("100")).longValue();
 
         TransferCreateParams params = TransferCreateParams.builder()
             .setAmount(valorEmCentavos)
             .setCurrency("brl")
             .setDestination(stripeAccountId) // O ID da conta do funcionário criado na Etapa 1
-            .setDescription("Folha de Pagamento - Ref: " + payroll.getReferencePeriod())
+            .setDescription("Folha de Pagamento - Ref: " + payroll.getPeriod().getMonth() + "/" + payroll.getPeriod().getYear())
             .build();
 
         // Passando uma chave de Idempotência baseada no ID da folha do MongoDB

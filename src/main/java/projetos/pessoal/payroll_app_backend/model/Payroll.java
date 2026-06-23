@@ -1,7 +1,7 @@
 package projetos.pessoal.payroll_app_backend.model;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +21,17 @@ public class Payroll {
     @Id
     private String id;
     
-    private String employeeId; // Referência direta ao ID do funcionário
-    private String employeeName; // Snapshot do nome para evitar lookups/joins
-    private LocalDate referencePeriod;
+    private Employee employee;
+    private PayrollPeriod period;
     
-    private BigDecimal grossSalary;
+    private BigDecimal grossAmount;
+    private BigDecimal totalEarnings;
     private BigDecimal totalDeductions;
-    private BigDecimal netSalary;
+    private BigDecimal netAmount;
     private PayrollStatus status;
+    private LocalDateTime generatedAt;
+    private LocalDateTime paymentDate;
+    private String paymentTransactionId;
     
-    // Lista de subdocumentos embutida diretamente
     private List<PayrollItem> items = new ArrayList<>();
 }

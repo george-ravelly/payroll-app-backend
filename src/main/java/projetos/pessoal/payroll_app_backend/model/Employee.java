@@ -1,6 +1,7 @@
 package projetos.pessoal.payroll_app_backend.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -29,4 +30,8 @@ public class Employee {
     
     private BigDecimal baseSalary;
     private String departmentName; // Guardar direto o nome simplifica para o MVP
+    private String phone;
+    private String position;
+    private LocalDate hireDate;
+    private String stripeAccountId;
 }

@@ -12,7 +12,8 @@ import projetos.pessoal.payroll_app_backend.model.enums.ItemType;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PayrollItem {
+    private String id;
     private String description;
-    private BigDecimal value;
-    private ItemType type; // ENTRY ou DEDUCTION
+    private BigDecimal amount;
+    private ItemType type;
 }
