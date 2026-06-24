@@ -34,4 +34,5 @@ public class Employee {
     private String position;
     private LocalDate hireDate;
     private String stripeAccountId;
+    private Schedule schedule;
 }

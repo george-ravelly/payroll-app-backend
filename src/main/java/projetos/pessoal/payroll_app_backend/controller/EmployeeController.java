@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import projetos.pessoal.payroll_app_backend.dto.EmployeeSchedule;
 import projetos.pessoal.payroll_app_backend.model.Employee;
 import projetos.pessoal.payroll_app_backend.service.EmployeeService;
 
@@ -43,6 +44,10 @@ public class EmployeeController {
         return employeeService.getEmployeeById(id);
     }
 
+    @GetMapping("/schedule/{id}")
+    public EmployeeSchedule getEmployeeScheduleById(@PathVariable String id) {
+        return employeeService.getEmployeeScheduleById(id);
+    }
 
     @PutMapping("/{id}")
     public Employee updateEmployee(

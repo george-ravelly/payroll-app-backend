@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import projetos.pessoal.payroll_app_backend.dto.EmployeeSchedule;
 import projetos.pessoal.payroll_app_backend.model.Employee;
 import projetos.pessoal.payroll_app_backend.repository.EmployeeRepository;
 
@@ -41,6 +42,12 @@ public class EmployeeService {
 
     public Employee getEmployeeById(String id) {
         return employeeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Employee not found"));
+    }
+
+    public EmployeeSchedule getEmployeeScheduleById(String id) throws IllegalArgumentException {
+        Employee employee = this.getEmployeeById(id);
+        if (!employee.isActive()) throw new RuntimeException("Employee is not active!");
+        return new EmployeeSchedule(employee.getId(), employee.getName(), employee.getPosition(), employee.getSchedule());
     }
 
     public Employee login(String email, String cpf) {
